@@ -48,3 +48,11 @@ process.on('unhandledRejection', (err) => {
 });
 
 //console.log(x); //To create a uncaught exception
+
+//Responding to a SIGTERM signal
+process.on('SIGTERM', () => {
+  console.log('SIGTERM Received, Shutting down gracefully!');
+  server.close(() => {
+    console.log('Process Terminated');
+  });
+});
