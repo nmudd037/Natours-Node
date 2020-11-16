@@ -4,19 +4,18 @@ const Booking = require('../models/bookingModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.alerts = async (res, req, next) => {
-  console.log(req.query);
-  if (typeof req.query !== 'undefined') {
-    console.log(req.query);
-    const { alert } = req.query;
-    if (alert === 'booking') {
-      res.locals.alert =
-        "Your booking was successfull! Please check your email for a confirmation. If your booking doesn't show up immediately, please come back later.";
-    }
-
-    return next();
+exports.alerts = async (req, res, next) => {
+  //console.log(req.query.alert);
+  //if (typeof req.query !== 'undefined') {
+  //console.log(req.query);
+  const { alert } = req.query;
+  if (alert === 'booking') {
+    res.locals.alert =
+      "Your booking was successfull! Please check your email for a confirmation. If your booking doesn't show up immediately, please come back later.";
   }
 
+  //return next();
+  //}
   next();
 };
 
