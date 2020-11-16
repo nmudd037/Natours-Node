@@ -12,7 +12,7 @@ exports.alerts = (res, req, next) => {
       "Your booking was successfull! Please check your email for a confirmation. If your booking doesn't show up immediately, please come back later.";
   }
 
-  res.locals.alert = alert;
+  res.locals.alert = req.query ? alert : '';
   next();
 };
 
