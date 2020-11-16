@@ -107,7 +107,7 @@ if (bookBtn) {
 }
 
 //Alert Messages
-const alertMessage = document.querySelector('body').dataset.alertMessage;
+const alertMessage = document.querySelector('body').dataset.alert;
 
 if(alertMessage) {
     showAlert('success', alertMessage, 20);
