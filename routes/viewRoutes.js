@@ -7,6 +7,8 @@ const router = express.Router();
 
 //router.use(authController.isLoggedIn);
 
+router.use(viewsController.alerts);
+
 router.get(
   '/',
   //bookingController.createBookingCheckout,
