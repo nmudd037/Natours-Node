@@ -383,7 +383,7 @@
     "startLocation": {
       "description": "Yellowknife, CAN",
       "type": "Point",
-      "coordinates": [-114.406097, 62.439943],
+      "coordinates": [-114.442209, 62.480126],
       "address": "Yellowknife, NT X1A 2L2, Canada"
     },
     "ratingsAverage": 4.7,
