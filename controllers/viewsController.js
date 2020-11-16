@@ -4,7 +4,7 @@ const Booking = require('../models/bookingModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.alerts = (res, req, next) => {
+exports.alerts = async (res, req, next) => {
   console.log(req.query);
   if (typeof req.query !== 'undefined') {
     console.log(req.query);
