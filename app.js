@@ -25,7 +25,9 @@ const app = express();
 //By enabling the "trust proxy" setting via app.enable('trust proxy'), Express will have knowledge that it's sitting behind a proxy and that the X-Forwarded-* header fields may be trusted, which otherwise may be easily spoofed."
 app.enable('trust proxy');
 
+// Setting our view engine to pug
 app.set('view engine', 'pug');
+// Setting our default views
 app.set('views', path.join(__dirname, 'views'));
 
 //1) Global Middleware
