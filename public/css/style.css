@@ -123,6 +123,7 @@ body {
   );
   background-image: linear-gradient(to right, #7dd56f, #28b487);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;
   line-height: 1.3;
@@ -1190,7 +1191,8 @@ body {
   align-self: center;
 }
 
-.error {
+.error,
+.emptyBooking {
   position: absolute;
   top: 35%;
   left: 50%;
@@ -1199,6 +1201,10 @@ body {
   max-width: 80rem;
   text-align: center;
 }
+.emptyBooking--link {
+  border-bottom: 1px solid #55c57a;
+}
+
 .error__title {
   display: -webkit-box;
   display: -ms-flexbox;

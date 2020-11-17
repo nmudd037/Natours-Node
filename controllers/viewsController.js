@@ -92,16 +92,22 @@ exports.getResetPasswordForm = (req, res) => {
 exports.getMyTours = catchAsync(async (req, res, next) => {
   // 1) Find all bookings
   const bookings = await Booking.find({ user: req.user.id });
+  //console.log(bookings.length);
+  if (!bookings.length) {
+    res.status(200).render('emptyBookings', {
+      title: 'My Booked Tours'
+    });
+  } else {
+    // 2) Find tours with the returned IDs
+    // Alternatively, we could use Virtual Populate
+    const tourIds = bookings.map((el) => el.tour);
+    const tours = await Tour.find({ _id: { $in: tourIds } });
 
-  // 2) Find tours with the returned IDs
-  // Alternatively, we could use Virtual Populate
-  const tourIds = bookings.map((el) => el.tour);
-  const tours = await Tour.find({ _id: { $in: tourIds } });
-
-  res.status(200).render('overview', {
-    title: 'My Booked Tours',
-    tours
-  });
+    res.status(200).render('overview', {
+      title: 'My Booked Tours',
+      tours
+    });
+  }
 });
 
 //exports.updateUserData = catchAsync(async (req, res, next) => {
