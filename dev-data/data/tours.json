@@ -383,7 +383,7 @@
     "startLocation": {
       "description": "Yellowknife, CAN",
       "type": "Point",
-      "coordinates": [-114.442209, 62.480126],
+      "coordinates": [-114.438441, 62.469663],
       "address": "Yellowknife, NT X1A 2L2, Canada"
     },
     "ratingsAverage": 4.7,
@@ -396,7 +396,7 @@
     ],
     "_id": "5c88fa8cf4afda39709c2974",
     "name": "The Northern Lights",
-    "duration": 3,
+    "duration": 10,
     "maxGroupSize": 12,
     "difficulty": "easy",
     "guides": [
@@ -413,8 +413,29 @@
         "_id": "5c88fa8cf4afda39709c2975",
         "description": "Yellowknife",
         "type": "Point",
-        "coordinates": [-114.406097, 62.439943],
+        "coordinates": [-114.319310, 62.518239],
         "day": 1
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2976",
+        "description": "Great Slave Lake",
+        "type": "Point",
+        "coordinates": [-113.483143, 61.964121],
+        "day": 2
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2977",
+        "description": "Nahanni National Park Reserve of Canada",
+        "type": "Point",
+        "coordinates": [-125.501499, 61.497464],
+        "day": 5
+      },
+      {
+        "_id": "5c88fa8cf4afda39709c2978",
+        "description": "Wood Buffalo National Park of Canada",
+        "type": "Point",
+        "coordinates": [-112.884642, 59.427459],
+        "day": 8
       }
     ]
   },
