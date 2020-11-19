@@ -4,18 +4,18 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 
-const displayMsg = (status, msg, path, timer, reload) => {
-    if (status === 'success') {
+const successMsg = (msg, path, timer, reload) => {
         showAlert('success', msg);
         window.setTimeout(() => {
             location.reload(reload);
             location.assign(path);
         }, timer);
-    } else if (status === 'error') {
-        console.log(err);
-        showAlert('error', err.response.data.message);
-    }
 };
+
+const errorMsg = (err) => {
+    console.log(err);
+    showAlert('error', err.response.data.message);
+}
 
 
 export const login = async (email, password) => {
@@ -32,7 +32,7 @@ export const login = async (email, password) => {
         });
 
         if (res.data.status === 'success') {
-            displayMsg('success', 'Logged in successfully', '/', 600);
+            successMsg('Logged in successfully', '/', 600);
             // showAlert('success', 'Logged in successfully');
             // window.setTimeout(() => {
             //    location.assign('/')
@@ -40,7 +40,7 @@ export const login = async (email, password) => {
         }
         //console.log(res);
     } catch (err) {
-        displayMsg('error');
+        errorMsg(err);
         // console.log(err);
         // showAlert('error', err.response.data.message);
     }
@@ -55,7 +55,7 @@ export const logout = async () => {
         });
 
         if (res.data.status = 'success') {
-            displayMsg('success', 'Logged out successfully', '/', 600, true);
+            successMsg('Logged out successfully', '/', 600, true);
             // showAlert('success', 'Logged out successfully');
             // window.setTimeout(() => {
             //     location.reload(true);
@@ -63,7 +63,7 @@ export const logout = async () => {
             //  }, 600);
         }     
     } catch (err) {
-        displayMsg('error');
+        errorMsg(err);
         // console.log(err);
         // //showAlert('error', 'Error logging out! Try again.');
         // showAlert('error', err.response.data.message);
@@ -86,7 +86,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
         });
 
         if (res.data.status === 'success') {
-            displayMsg('success', 'Signed up successfully', '/', 600, true);
+            successMsg('Signed up successfully', '/', 600, true);
             // showAlert('success', 'Signed up successfully');
             // window.setTimeout(() => {
             //    location.assign('/');
@@ -94,7 +94,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
         }
         //console.log(res);
     } catch (err) {
-        displayMsg('error');
+        errorMsg(err);
         // console.log(err);
         // //console.log(err.response.data);
         // showAlert('error', err.response.data.message);
@@ -106,7 +106,7 @@ export const forgotPassword = async (email) => {
     try {            
         const res = await axios({
             method: 'POST',
-            //url: 'http://127.0.0.1:3000/api/v1/users/forgotPassword',
+            //url: 'http://127.0.0.1:8000/api/v1/users/forgotPassword',
             url: '/api/v1/users/forgotPassword',
             data: {
                 email,
@@ -114,8 +114,8 @@ export const forgotPassword = async (email) => {
         });
 
         if (res.data.status === 'success') {
-            displayMsg(
-                'success', 'An email has been sent with password reset link!', '/login', 2500, true
+            successMsg(
+                'An email has been sent with password reset link!', '/login', 2500, true
             );
             // showAlert('success', 'An email has been sent with password reset link!');
             // window.setTimeout(() => {              
@@ -125,7 +125,7 @@ export const forgotPassword = async (email) => {
         }
         //console.log(res);
     } catch (err) {
-        displayMsg('error');
+        errorMsg(err);
         // console.log(err);
         // //console.log(err.response.data);
         // showAlert('error', err.response.data.message);
@@ -137,7 +137,7 @@ export const resetPassword = async (password, passwordConfirm, token) => {
     try {            
         const res = await axios({
             method: 'PATCH',
-            //url: `http://127.0.0.1:3000/api/v1/users/resetPassword/${token}`,
+            //url: `http://127.0.0.1:8000/api/v1/users/resetPassword/${token}`,
             url: `/api/v1/users/resetPassword/${token}`,
             data: {
                 password,
@@ -146,9 +146,8 @@ export const resetPassword = async (password, passwordConfirm, token) => {
         });
 
         if (res.data.status === 'success') {
-            displayMsg(
-                'success', 'Password reset successfull!, Login with your new password!', 
-                '/login', 1500, true
+            successMsg(
+              'Password reset successfull!, Login with your new password!', '/login', 1500, true
             );
             // showAlert('success', 'Password reset successfull!, Login with your new password!');
             // window.setTimeout(() => {              
@@ -158,7 +157,7 @@ export const resetPassword = async (password, passwordConfirm, token) => {
         }
         //console.log(res);
     } catch (err) {
-        displayMsg('error');
+        errorMsg(err);
         // console.log(err);
         // //console.log(err.response.data);
         // showAlert('error', err.response.data.message);
